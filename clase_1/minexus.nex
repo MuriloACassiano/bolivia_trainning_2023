@@ -1,0 +1,43 @@
+ 
+#NEXUS
+
+Begin taxa;
+   Dimensions ntax=10;
+   Taxlabels
+      Homo_sapiens
+      Mus_musculus
+      Rattus_norvegicus
+      Canis_lupus
+      Felis_catus
+      Gallus_gallus
+      Danio_rerio
+      Xenopus_tropicalis
+      Drosophila_melano
+      Caenorhabditis_ele
+    ;
+    End;
+
+Begin data;
+   Dimensions ntax=10 nchar=30;
+   Format datatype=dna missing=? gap=- matchchar=.;
+   Matrix
+      Homo_sapiens        ATGCTAGCTAGCTCGGATCTAGCTAGCTCG
+      Mus_musculus        .T...........T.....T.........A
+      Rattus_norvegicus   .T.........A..........C......G
+      Canis_lupus         .TC.....C..G......G..........A
+      Felis_catus         .T..........A.................
+      Gallus_gallus       GT.......T.GC....T..T...T...G
+      Danio_rerio         TTA........G......G..........
+      AXenopus_tropicalis  GT.......A.G.....T...........
+      Drosophila_melano   CCG.......TG.GT.T...T...T...A
+      Caenorhabditis_ele  TT..........G.....T...........
+      ;
+End;
+
+Begin trees;
+   Tree tree1 = ((Homo_sapiens, Mus_musculus), (((Canis_lupus, Felis_catus), Gallus_gallus), (Danio_rerio, Xenopus_tropicalis)), (Drosophila_melano, Caenorhabditis_ele));
+   Tree tree2 = ((Homo_sapiens, (Mus_musculus, Rattus_norvegicus)), (Canis_lupus, (Felis_catus, Gallus_gallus)), (Danio_rerio, (Xenopus_tropicalis, Drosophila_melano)), Caenorhabditis_ele);
+   Tree tree3 = ((Homo_sapiens, Mus_musculus, Rattus_norvegicus), (Canis_lupus, Felis_catus), ((Gallus_gallus, Danio_rerio), (Xenopus_tropicalis, Drosophila_melano, Caenorhabditis_ele)));
+   Tree tree4 = (((Homo_sapiens, Mus_musculus), Rattus_norvegicus), ((Canis_lupus, Felis_catus), Gallus_gallus), (Danio_rerio, (Xenopus_tropicalis, Drosophila_melano)), Caenorhabditis_ele);
+   Tree tree5 = ((Homo_sapiens, (Mus_musculus, (Rattus_norvegicus, (Canis_lupus, Felis_catus)))), ((Gallus_gallus, Danio_rerio), (Xenopus_tropicalis, (Drosophila_melano, Caenorhabditis_ele))));
+End;
